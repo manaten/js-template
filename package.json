@@ -1,0 +1,82 @@
+{
+  "name": "js-template",
+  "version": "1.0.0",
+  "description": "Modern JavaScript project template for me.",
+  "main": "index.js",
+  "repository": "git@github.com:manaten/js-template.git",
+  "author": "manaten <manaten@manaten.net> (http://manaten.net/)",
+  "license": "MIT",
+  "scripts": {
+    "lint:staged": "lint-staged"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "lint-staged": "^3.3.1",
+    "pre-commit": "^1.2.2",
+    "stylefmt": "^5.1.2",
+    "stylelint": "^7.9.0",
+    "stylelint-config-standard": "^16.0.0"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 8
+    },
+    "rules": {
+      "indent": [
+        2,
+        2
+      ],
+      "quotes": [
+        2,
+        "single"
+      ],
+      "linebreak-style": [
+        2,
+        "unix"
+      ],
+      "semi": [
+        2,
+        "always"
+      ]
+    },
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "string-quotes": "single",
+      "property-no-unknown": [
+        true,
+        {
+          "ignoreProperties": [
+            "composes"
+          ]
+        }
+      ],
+      "selector-pseudo-class-no-unknown": [
+        true,
+        {
+          "ignorePseudoClasses": [
+            "global"
+          ]
+        }
+      ]
+    }
+  },
+  "pre-commit": "lint:staged",
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{css,less,scss,sss}": [
+      "stylefmt",
+      "stylelint",
+      "git add"
+    ]
+  }
+}
